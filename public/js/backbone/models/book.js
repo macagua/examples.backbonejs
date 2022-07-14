@@ -28,12 +28,12 @@
 // > {title: "Homer's Odyssey", author: 'Ὅμηρος Hómēros', category: 'Unknown'}
 
 // var secondBook = new Book ();
-// > New instance has been created
+// > New Model Instance has been created
 
 // var thirdBook = new Book ({
 //   title: 'Homer\'s Odyssey',
 // });
-// > New instance has been created
+// > New Model Instance has been created
 
 // thirdBook.toJSON();
 // > {title: "Homer's Odyssey", author: 'Unknown'}
@@ -42,7 +42,7 @@
 //   title: 'The Metamorphosis',
 //   author: 'Kafka',
 // });
-// > New instance has been created
+// > New Model Instance has been created
 
 // fourthBook.toJSON();
 // > {title: 'The Metamorphosis', author: 'Kafka'}
@@ -53,7 +53,7 @@
 // var fifthBook = new Book ({
 //   id: '1',
 // });
-// > New instance has been created
+// > New Model Instance has been created
 
 // fifthBook.fetch();
 
@@ -65,7 +65,7 @@
 //   author: 'Herman Hesse',
 //   category: 'Literature',
 // });
-// > New instance has been created
+// > New Model Instance has been created
 // sixthBook.save();
 
 // sixthBook.set('category', 'Unknown');
@@ -91,7 +91,8 @@
 var Book = Backbone.Model.extend({
 
   initialize: function() {
-    console.log('New instance has been created');
+    console.log('New Model Instance has been created');
+
     this.on('change', function() {
       console.log('The Model changed');
     });
