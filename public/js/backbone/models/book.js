@@ -90,16 +90,18 @@
 
 var Book = Backbone.Model.extend({
 
+  urlRoot: '/books',
+
+  defaults: {
+    author: 'Unknown',
+  },
+
   initialize: function() {
     console.log('New Model Instance has been created');
 
     this.on('change', function() {
       console.log('The Model changed');
     });
-  },
-
-  defaults: {
-    author: 'Unknown',
   },
 
   validate: function(attributes) {
@@ -109,6 +111,5 @@ var Book = Backbone.Model.extend({
     }
   },
 
-  urlRoot: '/books',
 });
 
