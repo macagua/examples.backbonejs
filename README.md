@@ -18,7 +18,9 @@ For run the Backbone.js App, execute the following command:
 $ node app.js
 ```
 
+Open the web browser to http://127.0.0.1:4000
+
 ## Copyrigth
 
-Producido por @Devcodela
+Producido por [DevCode.la](https://devcode.la).
 
