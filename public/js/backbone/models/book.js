@@ -1,5 +1,7 @@
 // Backbone.js Models Examples
 
+// var Book = new Book();
+
 // var firstBook = new Book ({
 //   title: 'Odyssey',
 //   author: 'Homero',
