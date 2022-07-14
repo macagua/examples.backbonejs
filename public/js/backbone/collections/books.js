@@ -86,16 +86,12 @@ var a = new Book({ title: 'title 1', author: 'author 1' }),
 // books.toJSON();
 // > (4) [{…}, {…}, {…}, {…}]
 
-var BooksCollection = Backbone.Collection.extend({
+var app = app || {};
 
+var BooksList = Backbone.Collection.extend({
   model: Book,
-
   url: '/books/'
-
-  /*
-  initialize: function() {
-    console.log('New Collection instance has been created');
-  },
-  */
 });
+
+app.booksList = new BooksList();
 

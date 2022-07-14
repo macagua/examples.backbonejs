@@ -56,6 +56,28 @@
 // var changeColorView = new BookStore();
 // > New View instance has been created
 
+// ########################################################################################################
+
+// Backbone.js Templates Examples
+
+// var sampleTemplate = _.template($('#tplSample').html());
+// > undefined
+
+// $('body').append(sampleTemplate);
+// > init [body, prevObject: init(1), context: document, selector: 'body']
+
+// $('body').append(sampleTemplate);
+// > init [body, prevObject: init(1), context: document, selector: 'body']
+
+// $('body').append(sampleTemplate);
+// > init [body, prevObject: init(1), context: document, selector: 'body']
+
+// var loremIpsumView = new loremIpsum();
+// > New View instance has been created
+
+// loremIpsumView;
+// > undefined
+
 /*
 var BookStore = Backbone.View.extend({
   // tagName: 'span',
@@ -75,6 +97,7 @@ var BookStore = Backbone.View.extend({
 });
 */
 
+/*
 var BookStore = Backbone.View.extend({
   el: '.bookstore-view',
 
@@ -91,4 +114,55 @@ var BookStore = Backbone.View.extend({
   },
 
 });
+*/
+
+/*
+var loremIpsum = Backbone.View.extend({
+  template: _.template($('#tplSample').html()),
+
+  initialize: function() {
+    console.log('New View instance has been created');
+    this.render();
+  },
+
+  render: function() {
+    $('body').append(this.template);
+    $('body').append(this.template);
+    $('body').append(this.template);
+  },
+
+});
+*/
+
+var app = app || {};
+
+var BookStoreView = Backbone.View.extend({
+  el: '#app',
+
+  initialize: function() {
+    console.log('New View instance has been created');
+    app.booksList.on('add', this.showBook);
+    app.booksList.fetch();
+    app.booksList.toJSON();
+  },
+
+  showBook: function(model) {
+    // console.log(model.toJSON());
+    var view = new ShowBookView({model:model});
+    $('.books').append(view.render().$el);
+  },
+
+});
+
+var ShowBookView = Backbone.View.extend({
+  template: _.template($('#tplShowBook').html()),
+
+  render: function() {
+    this.$el.html( this.template( this.model.toJSON() ) );
+    return this;
+  },
+
+});
+
+var appView = new BookStoreView();
 
