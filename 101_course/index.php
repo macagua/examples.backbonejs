@@ -8,9 +8,15 @@
 </head>
 <body>
 
-  <div id="content"></div>
-
-  <div id="content1"></div>
+  <div class="container">
+    <table class="table" id="content">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+      </tr>
+    </table>
+  </div>
 
   <!-- Javascript libraries -->
   <script src="js/jquery-1.9.1.js" type="text/javascript"></script>

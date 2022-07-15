@@ -1,54 +1,79 @@
 // Backbone.js Main App - View Examples
 // more Models Examples checkout models.js file
 // more Collections Examples checkout collections.js file
+// more Views Examples checkout views.js file
+
+// Create a Backbone Model
+var Book = Backbone.Model.extend({
+	defaults: {
+		'id': null,
+		'name': null,
+		'age': null,
+	}
+});
+
+// Create a Backbone Collection
+var Books = Backbone.Collection.extend({
+	url: 'router.php/data',
+	model: Book,
+});
 
 // Create a Backbone View
 var BookView = Backbone.View.extend({
-	tagName: 'h1',
+	tagName: 'tr',
+
+	template: _.template('<td><%= id %></td><td><%= name %></td><td><%= age %></td>'),
 
 	render: function() {
-		this.$el.html('This is a H1');
+		// console.log(this.model);
+		// console.log(this.model.toJSON());
+		// console.log( this.template( this.model.toJSON() ) );
+		this.$el.html( this.template( this.model.toJSON() ) );
 		return this;
 	}
 });
-
-// Create a Backbone View Instance
-var book = new BookView();
-
-// Show Backbone View Instance at div id selector at index.php file
-$('#content').append(book.render().el);
-
-// Show Backbone View Instance(s)
-console.log(book);
-console.log(book.el);
-console.log(book.el.outerHTML);
-
-// Show Backbone View Instance as a jQuery Object
-console.log(book.$el);
-console.log('Show Backbone View Instance as a jQuery Object');
-
-// Show Backbone View Instance with render function
-console.log(book.render().el.outerHTML);
-console.log('Show Backbone View Instance with render function');
-
-// Show Backbone View Instance as a jQuery Object with render function
-console.log(book.render().$el);
-console.log('Show Backbone View Instance as a jQuery Object with render function');
 
 // Create a Backbone View from an element that already exists
 var BookDivView = Backbone.View.extend({
-	el: "#content1",
 
+	el: '#content',
+
+	initialize: function(){
+		this.listenTo( this.collection, 'sync', this.render );
+	},
+
+	// The template render every time, in this case 3 time, because are 3 records
+	/* render: function() {
+		// console.log( this.collection );
+		this.collection.each(function(book){
+			// console.log( book );
+			var newBook = new BookView({ model: book });
+			// console.log( newBook );
+			// newBook.render();
+			// console.log( newBook.render().el );
+			// console.log( newBook.render().$el );
+			// console.log( this );
+			this.$el.append( newBook.render().$el );
+		}, this);
+	} */
+
+	// The template render one time, in this case 3 time, because are 3 records
 	render: function() {
-		// Create a Backbone View Instance
-		var book1 = new BookView();
-		this.$el.html(book1.render().el);
-		return this;
+		var cache = document.createDocumentFragment();
+		this.collection.each(function(book){
+			var newBook = new BookView({ model: book });
+			cache.appendChild( newBook.render().el );
+		});
+		this.$el.append(cache);
 	}
 });
 
-// Create a Backbone View Instance
-var bookDiv = new BookDivView();
+// Create a Backbone Collection Instance
+var books = new Books();
 
-// Show Backbone View Instance at div id selector at index.php file
-bookDiv.render();
+// Create a Backbone View Instance
+var bookTableDiv = new BookDivView({
+	collection: books,
+});
+
+books.fetch();
