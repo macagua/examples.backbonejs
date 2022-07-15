@@ -29,6 +29,25 @@ Open the web browser to
 
 - http://localhost:8023/index.php
 
+Test the data source via API Get Request via Web browser
+
+- http://localhost:8023/router.php/data/1
+
+- http://localhost:8023/router.php/data/2
+
+- http://localhost:8023/router.php/data/3
+
+Test the data source via API Get Request using Web browser Javascript console
+
+$.get('router.php/data/1', function(data){console.log(data);});
+> {"id":0,"name":"Leonardo","age":35}
+
+$.get('router.php/data/2', function(data){console.log(data);});
+> {"id":1,"name":"Ana","age":33}
+
+$.get('router.php/data/3', function(data){console.log(data);});
+> {"id":2,"name":"Miriam","age":58}
+
 
 ## Copyrigth
 
