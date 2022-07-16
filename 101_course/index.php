@@ -18,6 +18,12 @@
     </table>
   </div>
 
+  <script type="text/templates" id="tplBook">
+    <td><%= id %></td>
+    <td><%= name %></td>
+    <td><%= age %></td>
+  </script>
+
   <!-- Javascript libraries -->
   <script src="js/jquery-1.9.1.js" type="text/javascript"></script>
   <script src="js/bootstrap-3.3.5.min.js" type="text/javascript"></script>

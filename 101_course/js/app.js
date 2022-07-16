@@ -22,11 +22,11 @@ var Books = Backbone.Collection.extend({
 var BookView = Backbone.View.extend({
 	tagName: 'tr',
 
-	template: _.template('<td><%= id %></td><td><%= name %></td><td><%= age %></td>'),
+	template: _.template( $('#tplBook').html() ),
 
 	render: function() {
-		// console.log(this.model);
-		// console.log(this.model.toJSON());
+		// console.log( this.model );
+		// console.log( this.model.toJSON() );
 		// console.log( this.template( this.model.toJSON() ) );
 		this.$el.html( this.template( this.model.toJSON() ) );
 		return this;
