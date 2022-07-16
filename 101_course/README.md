@@ -1,6 +1,6 @@
 # Curso 101 de BackboneJS
 
-Bienvenidos al [Curso 101 de BackboneJS](https://www.youtube.com/playlist?list=PLObPfsbLWL1yUHWjWWk7axroKUqGkZyYL).
+Welcome to [Curso 101 de BackboneJS](https://www.youtube.com/playlist?list=PLObPfsbLWL1yUHWjWWk7axroKUqGkZyYL).
 
 
 ## Install
@@ -62,4 +62,4 @@ $.get('router.php/data/3', function(data){console.log(data);});
 
 ## Copyrigth
 
-Producido por [Cristino Zamora](https://www.youtube.com/user/Aixeiger).
+Produced by [Cristino Zamora](https://www.youtube.com/user/Aixeiger).
