@@ -77,3 +77,15 @@ var bookTableDiv = new BookDivView({
 });
 
 books.fetch();
+
+// Create a Backbone Model Instance
+var book = new Book();
+
+// Set an attribute at Backbone Model Instance
+book.set('name', 'The Bible');
+
+// Show Backbone Model Instance
+console.log( book );
+
+// Show an attribute at Backbone Model Instance
+console.log( book.get('name') );
